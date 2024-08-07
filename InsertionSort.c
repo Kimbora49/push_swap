@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	insertionsort(t_list **a, t_list **b, int argc)
+void	insertionsort(t_list **a, t_list **b)
 {
     int i;
+	int lena;
     
+	lena = 2;
     i = 0;
     ra(a);
     ra(a);
@@ -21,14 +23,15 @@ void	insertionsort(t_list **a, t_list **b, int argc)
          pb(a, b);
     if((*a)->data > (*a)->next->data)
         sa((*a));
-    while ((*b)->next != NULL)
+    while ((*b) != NULL)
     {
-        while((*b)->data > (*a)->data && i < argc - 1)
+        while((*b)->data > (*a)->data && i < lena)
         {
             i++;
             ra(a);
         }
-        pa(a, b);
+		pa(a, b);
+		lena++;
         while(i > 0)
         {
             rra(a);
@@ -37,6 +40,3 @@ void	insertionsort(t_list **a, t_list **b, int argc)
     }
     return ;
 }
-
-        //    4 4 6 7 8 124 254 5          A
-        //       654 84     B
