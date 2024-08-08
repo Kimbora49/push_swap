@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_is_stack_sorted.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 14:35:21 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/08 13:39:48 by tmazan           ###   ########.fr       */
+/*   Created: 2024/08/08 13:24:26 by tmazan            #+#    #+#             */
+/*   Updated: 2024/08/08 13:36:24 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
-
-// PROTOTYPES
-typedef struct s_list
+bool ft_is_stack_sorted(t_list **a)
 {
-    int             data;
-    struct s_list   *next;
-}   t_list;
-
-
-#endif
+    while(a->next)
+    {
+        while(a->data < a->next->data)
+            a = a->next;
+    }
+    if(a->next == NULL)
+        return (1);
+    return (0);
+}

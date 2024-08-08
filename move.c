@@ -1,137 +1,211 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   usefull.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 14:25:45 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/05 14:29:41 by tmazan           ###   ########.fr       */
+/*   Created: 2024/08/05 14:21:10 by tmazan            #+#    #+#             */
+/*   Updated: 2024/08/08 11:55:17 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void    sa(t_list *a)
 {
-	t_list	*u;
+    int temp;
 
-	u = *lst;
-	if (new == NULL)
-	{
-		return ;
-	}
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	while (u->next != NULL)
-	{
-		u = u->next;
-	}
-	if (u->next == NULL)
-	{
-		u->next = new;
-	}
-	return ;
-}
-
-t_list *ft_lstnew(void *lettre)
-{
-    t_list *lstnew;
-
-    lstnew = (t_list *)malloc(sizeof(t_list));
-    if (lstnew == NULL)
+    if(a->next)
     {
-        return NULL;
+        temp = a->data;
+        a->data = a->next->data;
+        a->next->data = temp;
+        printf("sa\n");
     }
-    lstnew->content = lettre;
-    lstnew->next = NULL;
-    return  (lstnew); 
-}
+    return ;
+}//ok
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void    sb(t_list *b)
 {
-	if (lst == NULL || new == NULL)
-	{
+    int temp;
+
+    if(b->next)
+    {
+        temp = b->data;
+        b->data = b->next->data;
+        b->next->data = temp;
+        printf("sb\n");
+    }
+    return ;
+}//ok
+
+void    ss(t_list *a, t_list *b)
+{
+    int temp;
+
+    if(a->next)
+    {
+        temp = a->data;
+        a->data = a->next->data;
+        a->next->data = temp;
+    }
+    if(b->next)
+    {
+        temp = b->data;
+        b->data = b->next->data;
+        b->next->data = temp;
+    }
+    printf("ss\n");
+    return ;
+}//ok
+
+void    pa(t_list **a, t_list **b)
+{
+	t_list	*btemp;
+
+    if(*b == NULL)
 		return ;
-	}
-	new->next = *lst;
-	*lst = new;
-}
+	btemp = *b;
+	*b = btemp->next;
+	btemp->next = *a;
+	*a = btemp;
+    printf("pa\n");
+    return ; 
+}//ok
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void    pb(t_list **a, t_list **b)
 {
-	t_list	*temp;
+	t_list	*atemp;
 
-	if (del == NULL || *lst == NULL)
-	{
+    if(*a == NULL)
 		return ;
-	}
-	while (*lst != NULL)
-	{
-		temp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = temp;
-	}
-	free(*lst);
-}
+	atemp = *a;
+	*a = atemp->next;
+	atemp->next = *b;
+	*b = atemp;
+    printf("pb\n");
+    return ; 
+}//ok
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void    ra(t_list **a)
 {
-	if (lst == NULL || del == NULL)
-	{
+	t_list	*node;
+
+	if (*a == NULL || (*a)->next == NULL)
 		return ;
-	}
-	del(lst->content);
-	free(lst);
-	return ;
-}
-
-void	ft_lstiter(t_list *lst, void (*f)(void *))
-{
-	if (lst == NULL)
+	node = *a;
+	while (node->next != NULL)
 	{
+		node = node->next;
+	}
+	node->next = *a;
+	*a = (*a)->next;
+	node->next->next = NULL;
+	write(1, "ra\n", 3);
+}//ok
+
+void    rb(t_list **b)
+{
+	t_list	*node;
+
+	if (*b == NULL || (*b)->next == NULL)
 		return ;
-	}
-	while (lst != NULL)
+	node = *b;
+	while (node->next != NULL)
 	{
-		f(lst->content);
-		lst = lst->next;
+		node = node->next;
 	}
-	return ;
-}
+	node->next = *b;
+	*b = (*b)->next;
+	node->next->next = NULL;
+	write(1, "rb\n", 3);
+}//ok
 
-t_list	*ft_lstlast(t_list *lst)
+void    rr(t_list **a, t_list **b)
 {
-	if (lst == NULL)
-	{
-		return (NULL);
-	}
-	while (lst->next != NULL)
-	{
-		lst = lst->next;
-	}
-	return (lst);
-}
+    t_list	*node;
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
-{
-	if (lst == NULL || del == NULL)
-	{
+    if (*a == NULL || (*a)->next == NULL)
 		return ;
-	}
-	del(lst->content);
-	free(lst);
-	return ;
-}
-
-void ft_lstdellast(t_list *lst, void (*del)(void*))
-{
-    if (lst == NULL || del == NULL)
+	if (*b == NULL || (*b)->next == NULL)
 		return ;
-	while (lst->next != NULL)
-		lst = lst->next;
-	del(lst->content);
-	free(lst);
-	return ;
-}
+	node = *b;
+	while (node->next != NULL)
+	{
+		node = node->next;
+	}
+	node->next = *b;
+	*b = (*b)->next;
+	node->next->next = NULL;
+	node = *a;
+	while (node->next != NULL)
+	{
+		node = node->next;
+	}
+	node->next = *a;
+	*a = (*a)->next;
+	node->next->next = NULL;
+    printf("rr\n");
+    return ;
+}//ok
+
+void    rra(t_list **a)
+{
+	t_list	*node;
+
+	if (*a == NULL || (*a)->next == NULL)
+		return ;
+	node = *a;
+	while (node->next->next != NULL)
+	{
+		node = node->next;
+	}
+	node->next->next = *a;
+	*a = node->next;
+	node->next = NULL;
+	write(1, "rra\n", 4);
+}//ok
+
+void    rrb(t_list **b)
+{
+	t_list	*node;
+
+	if (*b == NULL || (*b)->next == NULL)
+		return ;
+	node = *b;
+	while (node->next->next != NULL)
+	{
+		node = node->next;
+	}
+	node->next->next = *b;
+	*b = node->next;
+	node->next = NULL;
+	write(1, "rrb\n", 4);
+}//ok
+
+void    rrr(t_list **a, t_list **b)
+{
+    t_list	*node;
+
+    if (*a == NULL || (*a)->next == NULL)
+		return ;
+	if (*b == NULL || (*b)->next == NULL)
+		return ;
+	node = *b;
+	while (node->next->next != NULL)
+	{
+		node = node->next;
+	}
+	node->next->next = *b;
+	*b = node->next;
+	node->next = NULL;
+	node = *a;
+	while (node->next->next != NULL)
+	{
+		node = node->next;
+	}
+	node->next->next = *a;
+	*a = node->next;
+	node->next = NULL;
+    printf("rrr\n");
+    return ;
+}//ok
