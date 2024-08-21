@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleaner_postpush.c                                 :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 16:35:40 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/21 23:31:23 by tmazan           ###   ########.fr       */
+/*   Created: 2024/08/21 23:17:41 by tmazan            #+#    #+#             */
+/*   Updated: 2024/08/21 23:27:28 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_list(t_list **list)
+long	ft_atol(const char *nptr)
 {
-	t_list	*tmp;
-	t_list	*current;
+	long	nbr;
+	long	signe;
+	int		i;
 
-	if (!list)
-		return ;
-	current = *list;
-	while (current)
+	nbr = 0;
+	signe = 1;
+	i = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		tmp = current->next;
-		current->nbr = 0;
-		free(current);
-		current = tmp;
+		if (nptr[i] == '-')
+			signe *= (-1);
+		i++;
 	}
-	*list = NULL;
-}
-
-void	free_errors(t_list **list)
-{
-	free_list(list);
-	ft_printf("Error\n");
-	exit(1);
+	while (nptr[i] >= 48 && nptr[i] <= 57)
+		nbr = (nbr * 10) + (nptr[i++] - 48);
+	return (nbr * signe);
 }
