@@ -6,7 +6,7 @@
 #    By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 12:20:53 by ddifalla          #+#    #+#              #
-#    Updated: 2024/08/21 23:46:57 by tmazan           ###   ########.fr        #
+#    Updated: 2024/08/25 12:57:19 by tmazan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME				= push_swap
 
 # Directories
 LIBFT				= ./libft/libft.a
-INC					= inc/
-SRC_DIR				= srcs/
+HEADER				= header/
+SRC_DIR				= sources/
 OBJ_DIR				= obj/
 
 # Compiler and CFlags
@@ -25,27 +25,25 @@ CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
 # Source Files
-MOVES_DIR			=	$(SRC_DIR)moves/push.c \
-						$(SRC_DIR)moves/rev_rotate.c \
+MOVES_DIR		=		$(SRC_DIR)moves/push.c \
+						$(SRC_DIR)moves/reverse_rotate.c \
 						$(SRC_DIR)moves/rotate.c \
-						$(SRC_DIR)moves/swap.c
-						
+						$(SRC_DIR)moves/swap.c \
 
-						$(SRC_DIR)moves/sort_stacks.c \
-						$(SRC_DIR)moves/sort_three.c \
-
-PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/handle_errors.c \
-						$(SRC_DIR)push_swap/init_a_to_b.c \
-						$(SRC_DIR)push_swap/init_b_to_a.c \
-						$(SRC_DIR)push_swap/push_swap.c \
-						$(SRC_DIR)push_swap/split.c \
-						$(SRC_DIR)push_swap/stack_init.c \
-						$(SRC_DIR)push_swap/stack_utils.c
+PUSH_SWAP_DIR		=	$(SRC_DIR)cleaner_postpush.c \
+						$(SRC_DIR)helper_init.c \
+						$(SRC_DIR)helper_prepush.c \
+						$(SRC_DIR)init_a_to_b.c \
+						$(SRC_DIR)init_b_to_a.c \
+						$(SRC_DIR)init_list_a.c \
+						$(SRC_DIR)push_swap.c \
+						$(SRC_DIR)sort_list.c \
+						$(SRC_DIR)split.c 
 
 # Concatenate all source files
-SRCS 				= $(moves_DIR) $(PUSH_SWAP_DIR)
+SRCS 				= $(MOVES_DIR) $(PUSH_SWAP_DIR)
 
-# Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
+# Apply the pattern substitution to each source file in sources and produce a corresponding list of object files in the OBJ_DIR
 OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
 # Build rules
@@ -58,12 +56,12 @@ $(LIBFT):
 all: 				$(NAME)
 
 $(NAME): 			$(OBJ) $(LIBFT)
-					@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
+					@$(CC) $(CFLAGS) $(HEADER) $(OBJ) $(LIBFT) -o $(NAME)
 
 # Compile object files from source files
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
 					@mkdir -p $(@D)
-					@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+					@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
 clean:
 					@$(RM) -r $(OBJ_DIR)
