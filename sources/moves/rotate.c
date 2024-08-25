@@ -6,13 +6,13 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:52:46 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/25 12:31:48 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/25 20:39:51 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 
-void    ra(t_node **a)
+void	ra(t_node **a)
 {
 	t_node	*node;
 
@@ -27,9 +27,9 @@ void    ra(t_node **a)
 	*a = (*a)->next;
 	node->next->next = NULL;
 	write(1, "ra\n", 3);
-}//ok
+}
 
-void    rb(t_node **b)
+void	rb(t_node **b)
 {
 	t_node	*node;
 
@@ -44,13 +44,13 @@ void    rb(t_node **b)
 	*b = (*b)->next;
 	node->next->next = NULL;
 	write(1, "rb\n", 3);
-}//ok
+}
 
-void    rr(t_node **a, t_node **b)
+void	rr(t_node **a, t_node **b)
 {
-    t_node	*node;
+	t_node	*node;
 
-    if (*a == NULL || (*a)->next == NULL)
+	if (*a == NULL || (*a)->next == NULL)
 		return ;
 	if (*b == NULL || (*b)->next == NULL)
 		return ;
@@ -70,6 +70,6 @@ void    rr(t_node **a, t_node **b)
 	node->next = *a;
 	*a = (*a)->next;
 	node->next->next = NULL;
-    printf("rr\n");
-    return ;
-}//ok
+	printf("rr\n");
+	return ;
+}

@@ -6,28 +6,28 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:49:23 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/25 12:37:27 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/25 20:44:33 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int list_len(t_node *list)
+int	list_len(t_node *list)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(list)
-    {
-        list = list->next;
-        i++;
-    }
-    return (i);
+	i = 0;
+	while (list)
+	{
+		list = list->next;
+		i++;
+	}
+	return (i);
 }
 
 t_node	*find_max(t_node *list)
 {
-	long 	max;
+	long	max;
 	t_node	*tmp;
 
 	if (!list)
@@ -47,7 +47,7 @@ t_node	*find_max(t_node *list)
 
 t_node	*find_min(t_node *list)
 {
-	long 	min;
+	long	min;
 	t_node	*tmp;
 
 	if (!list)

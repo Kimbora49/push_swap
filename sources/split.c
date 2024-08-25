@@ -6,71 +6,89 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:35:39 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/25 12:37:05 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/25 21:01:49 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int		count_word(char *str)
+static int	ft_countword(char const *str)
 {
-	int i;
-	int cnt;
+	int	i;
+	int	count;
 
 	i = 0;
-	cnt = 0;
+	count = 0;
 	while (str[i])
 	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-			i++;
-		if (str[i] && str[i] != ' ' && str[i] != '\t')
+		if (str[i] != " " && str[i] != "\t")
 		{
-			while (str[i] && str[i] != ' ' && str[i] != '\t')
+			count++;
+			while (str[i] && str[i] != " " && str[i] != "\t")
 				i++;
-			cnt++;
 		}
+		else if (str[i] == " " || str[i] == "\t")
+			i++;
 	}
-	return (cnt);
+	return (count);
 }
 
-int		word_len(char *str, int i)
+static int	ft_lenword(char const *str)
 {
-	int cnt;
+	size_t	i;
 
-	cnt = 0;
-	while (str[i] && str[i] != ' ' && str[i] != '\t')
-	{
-		cnt++;
+	i = 0;
+	while (str[i] && str[i] != " " && str[i] != "\t")
 		i++;
-	}
-	return (cnt);
+	return (i);
 }
 
-char 	**ft_split(char *str)
+static void	freeing(size_t i, char **dest)
 {
-	int i;
-	int j;
-	int k;
-	char **tab;
+	while (i > 0)
+	{
+		i--;
+		free(dest[i]);
+	}
+	free(dest);
+}
+
+static char	**ft_addword(char **dest, char const *str, size_t nbwords)
+{
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
-	if (!(tab = malloc(sizeof(char *) * (count_word(str) + 1))))
-		return (NULL);
-	while (str[i])
+	while (i < nbwords)
 	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-			i++;
-		if (str[i])
+		while (str[j] && str[j] == " " || str[j] == "\t")
+			j++;
+		dest[i] = ft_substr(str, j, ft_lenword(&str[j]));
+		if (!dest[i])
 		{
-			k = 0;
-			if (!(tab[j] = malloc(sizeof(char) * (word_len(str, i) + 1))))
-				return (NULL);
-			while (str[i] && str[i] != ' ' && str[i] != '\t')
-				tab[j][k++] = str[i++]; // segfault 
-			tab[j++][k] = '\0';
+			freeing(i, dest);
+			return (NULL);
 		}
+		while (str[j] && str[j] != " " && str[j] != "\t")
+			j++;
+		i++;
 	}
-	tab[j] = NULL;
-	return (tab);
+	dest[i] = NULL;
+	return (dest);
+}
+
+char	**ft_split(char const *s)
+{
+	char	**dest;
+	size_t	nbwords;
+
+	if (!s)
+		return (NULL);
+	nbwords = ft_countword(s);
+	dest = malloc(sizeof(char *) * (nbwords + 1));
+	if (!dest)
+		return (NULL);
+	dest = ft_addword(dest, s, nbwords);
+	return (dest);
 }

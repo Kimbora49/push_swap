@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:51:18 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/25 12:37:19 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/25 20:51:55 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	append_node(t_node **list, int n)
 	}
 }
 
-t_node *find_last(t_node *list)
+t_node	*find_last(t_node *list)
 {
-    while(list->next)
-    {
-        list = list->next;
-    }
-    return (list);
+	while (list->next)
+	{
+		list = list->next;
+	}
+	return (list);
 }
 
 int	error_syntax(char *s)
@@ -89,7 +89,7 @@ void	init_node_a(t_node **a, char **argv)
 		if (n > INT_MAX || n < INT_MIN)
 			free_errors(a);
 		if (error_duplicate(*a, (int)n))
-			free_errors(a);			
+			free_errors(a);
 		append_node(a, (int)n);
 		i++;
 	}

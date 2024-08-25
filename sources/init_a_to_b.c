@@ -6,16 +6,16 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:13 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/25 12:37:23 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/25 20:48:21 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void    init_index_median(t_node *list)
+void	init_index_median(t_node *list)
 {
-	int i;
-	int median;
+	int	i;
+	int	median;
 
 	i = 0;
 	if (!list)
@@ -33,11 +33,11 @@ void    init_index_median(t_node *list)
 	}
 }
 
-void set_target_a(t_node *a, t_node *b)
+void	set_target_a(t_node *a, t_node *b)
 {
-	t_node  *current_b;
-	t_node  *target_node;
-	long    best_match_index;
+	t_node	*current_b;
+	t_node	*target_node;
+	long	best_match_index;
 
 	while (a)
 	{
@@ -61,19 +61,19 @@ void set_target_a(t_node *a, t_node *b)
 	}
 }
 
-void cost_analysis_a(t_node *a, t_node *b)
+void	cost_analysis_a(t_node *a, t_node *b)
 {
-	int len_a;
-	int len_b;
+	int	len_a;
+	int	len_b;
 
 	len_a = list_len(a);
 	len_b = list_len(b);
 	while (a)
 	{
 		a->push_cost = a->index;
-		if(!(a->above_median))
+		if (!(a->above_median))
 			a->push_cost = len_a - (a->index);
-		if(a->target_node->above_median)
+		if (a->target_node->above_median)
 			a->push_cost = a->push_cost + a->target_node->index;
 		else
 			a->push_cost = a->push_cost + (len_b - (a->target_node->index));
@@ -81,7 +81,7 @@ void cost_analysis_a(t_node *a, t_node *b)
 	}
 }
 
-void    set_cheapest(t_node * list)
+void	set_cheapest(t_node *list)
 {
 	long	cheapest_value;
 	t_node	*cheapest_node;
@@ -101,7 +101,7 @@ void    set_cheapest(t_node * list)
 	cheapest_node->cheapest = true;
 }
 
-void    init_nodes_a(t_node *a, t_node *b)
+void	init_nodes_a(t_node *a, t_node *b)
 {
 	init_index_median(a);
 	init_index_median(b);
