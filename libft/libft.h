@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:52:11 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/25 20:34:52 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/26 22:21:35 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@
 # include <unistd.h>
 # include <string.h>
 # include <limits.h>
+# include <stdarg.h>
+
+// FT_PRINTF
+int		ft_printf(const char *format, ...);
+void	ft_putunsnbr_fd(unsigned int n, int *pj, int fd);
+void	ft_putchar_fd(char c, int *pj, int fd);
+void	ft_putnbr_fd(int n, int *pj, int fd);
+void	ft_putstr_fd(char *s, int *pj, int fd);
+int		ft_testers(int *pj, va_list args, const char *format, int i);
+void	ft_regroupft(int *pj, va_list args, const char formatc, int fd);
+void	ft_regroupft2(int *pj, va_list args, const char formatc, int fd);
+void	ft_putnbr_base(unsigned long long n, char *base, int *pj, char c);
 
 // PROTOTYPES
 long	ft_atol(const char *nptr);
@@ -67,5 +79,6 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
+
 
 #endif

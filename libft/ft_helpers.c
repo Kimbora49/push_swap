@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers1.c                                      :+:      :+:    :+:   */
+/*   ft_helpers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddifalla <ddifalla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:54:16 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/06/18 15:07:13 by ddifalla         ###   ########.fr       */
+/*   Updated: 2024/08/26 22:23:18 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 //-------------------------ft_putchar_fd
 void	ft_putchar_fd(char c, int *pj, int fd)

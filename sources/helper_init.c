@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:49:23 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/25 20:44:33 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/26 21:48:40 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,16 @@ t_node	*find_min(t_node *list)
 	while (min != list->nbr)
 		list = list->next;
 	return (list);
+}
+t_node	*get_cheapest(t_node *list)
+{
+	if (!list)
+		return (NULL);
+	while (list)
+	{
+		if (list->cheapest)
+			return (list);
+		list = list->next;
+	}
+	return (NULL);
 }

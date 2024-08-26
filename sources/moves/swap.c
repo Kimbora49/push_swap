@@ -6,17 +6,17 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:53:40 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/25 20:41:43 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/26 21:25:48 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 
-void	sa(t_node *a)
+void	sa(t_node **a)
 {
 	int	temp;
 
-	if (a->next)
+	if ((*a)->next)
 	{
 		temp = (*a)->nbr;
 		(*a)->nbr = (*a)->next->nbr;
@@ -26,11 +26,11 @@ void	sa(t_node *a)
 	return ;
 }
 
-void	sb(t_node *b)
+void	sb(t_node **b)
 {
 	int	temp;
 
-	if (b->next)
+	if ((*b)->next)
 	{
 		temp = (*b)->nbr;
 		(*b)->nbr = (*b)->next->nbr;
@@ -40,17 +40,17 @@ void	sb(t_node *b)
 	return ;
 }
 
-void	ss(t_node *a, t_node *b)
+void	ss(t_node **a, t_node **b)
 {
 	int	temp;
 
-	if (a->next)
+	if ((*a)->next)
 	{
 		temp = (*a)->nbr;
 		(*a)->nbr = (*a)->next->nbr;
 		(*a)->next->nbr = temp;
 	}
-	if (b->next)
+	if ((*b)->next)
 	{
 		temp = (*b)->nbr;
 		(*b)->nbr = (*b)->next->nbr;

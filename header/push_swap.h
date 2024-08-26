@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:56:48 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/25 20:32:03 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/26 22:19:27 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdbool.h> //To use bool flags, e.g, to print or not to print
 # include <limits.h> //To define MIN and MAX macros
 # include "../libft/libft.h"
-# include "../libft/ft_printf/ft_printf/ft_printf.h"
 
 // PROTOTYPES
 typedef struct s_node
@@ -34,10 +33,6 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
-
-//libft
-long		ft_atol(const char *nptr);
-int			ft_printf(const char *format, ...);
 
 //cleaner_postpush
 void		free_list(t_node **list);
@@ -58,15 +53,18 @@ void		init_nodes_b(t_node *a, t_node *b);
 int			list_len(t_node *list);
 t_node		*find_max(t_node *list);
 t_node		*find_min(t_node *list);
+t_node		*get_cheapest(t_node *list);
 
 //split
 int			count_word(char *str);
 int			word_len(char *str, int i);
-char		**ft_split(char *str);
+char		**ft_split(char *s);
 
 //helper_prepush
 void		prep_for_push(t_node **list, t_node *top_node, char list_name);
 bool		list_sorted(t_node *lst);
+void		rotate_both(t_node **a, t_node **b, t_node *cheapest_node);
+void		rev_rotate_both(t_node **a, t_node **b, t_node *cheapest_node);
 
 //sort_node
 void		move_a_to_b(t_node **a, t_node **b);
@@ -77,9 +75,9 @@ void		sort_node(t_node **a, t_node **b);
 
 //move
 	//swap
-void		sa(t_node *a);
-void		sb(t_node *b);
-void		ss(t_node *a, t_node *b);
+void		sa(t_node **a);
+void		sb(t_node **b);
+void		ss(t_node **a, t_node **b);
 
 	//push
 void		pa(t_node **a, t_node **b);

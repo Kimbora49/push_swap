@@ -6,13 +6,13 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:35:39 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/25 21:01:49 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/26 22:07:17 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-static int	ft_countword(char const *str)
+int	ft_countword(char *str)
 {
 	int	i;
 	int	count;
@@ -21,29 +21,29 @@ static int	ft_countword(char const *str)
 	count = 0;
 	while (str[i])
 	{
-		if (str[i] != " " && str[i] != "\t")
+		if (str[i] != ' ' && str[i] != '\t')
 		{
 			count++;
-			while (str[i] && str[i] != " " && str[i] != "\t")
+			while (str[i] && str[i] != ' ' && str[i] != '\t')
 				i++;
 		}
-		else if (str[i] == " " || str[i] == "\t")
+		else if (str[i] == ' ' || str[i] == '\t')
 			i++;
 	}
 	return (count);
 }
 
-static int	ft_lenword(char const *str)
+int	ft_lenword(char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (str[i] && str[i] != " " && str[i] != "\t")
+	while (str[i] && str[i] != ' ' && str[i] != '\t')
 		i++;
 	return (i);
 }
 
-static void	freeing(size_t i, char **dest)
+void	freeing(size_t i, char **dest)
 {
 	while (i > 0)
 	{
@@ -53,7 +53,7 @@ static void	freeing(size_t i, char **dest)
 	free(dest);
 }
 
-static char	**ft_addword(char **dest, char const *str, size_t nbwords)
+char	**ft_addword(char **dest, char *str, size_t nbwords)
 {
 	size_t	i;
 	size_t	j;
@@ -62,7 +62,7 @@ static char	**ft_addword(char **dest, char const *str, size_t nbwords)
 	j = 0;
 	while (i < nbwords)
 	{
-		while (str[j] && str[j] == " " || str[j] == "\t")
+		while (str[j] && (str[j] == ' ' || str[j] == '\t'))
 			j++;
 		dest[i] = ft_substr(str, j, ft_lenword(&str[j]));
 		if (!dest[i])
@@ -70,7 +70,7 @@ static char	**ft_addword(char **dest, char const *str, size_t nbwords)
 			freeing(i, dest);
 			return (NULL);
 		}
-		while (str[j] && str[j] != " " && str[j] != "\t")
+		while (str[j] && str[j] != ' ' && str[j] != '\t')
 			j++;
 		i++;
 	}
@@ -78,7 +78,7 @@ static char	**ft_addword(char **dest, char const *str, size_t nbwords)
 	return (dest);
 }
 
-char	**ft_split(char const *s)
+char	**ft_split(char *s)
 {
 	char	**dest;
 	size_t	nbwords;

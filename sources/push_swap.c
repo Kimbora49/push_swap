@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:01:48 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/25 20:52:23 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/26 21:45:13 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_list	*a;
-	t_list	*b;
+	t_node	*a;
+	t_node	*b;
 
 	a = NULL;
 	b = NULL;
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1]);
-	init_list_a(&a, argv + 1);
+	init_node_a(&a, argv + 1);
 	if (!list_sorted(a))
 	{
 		if (list_len(a) == 2)
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		else if (list_len(a) == 3)
 			ft_sort_3elem(&a);
 		else
-			sort_list(&a, &b);
+			sort_node(&a, &b);
 	}
 	free_list(&a);
 	return (0);
