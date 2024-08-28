@@ -6,7 +6,7 @@
 #    By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 12:20:53 by ddifalla          #+#    #+#              #
-#    Updated: 2024/08/25 20:03:57 by tmazan           ###   ########.fr        #
+#    Updated: 2024/08/28 20:24:24 by tmazan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ PUSH_SWAP_DIR		=	$(SRC_DIR)cleaner_postpush.c \
 						$(SRC_DIR)helper_prepush.c \
 						$(SRC_DIR)init_a_to_b.c \
 						$(SRC_DIR)init_b_to_a.c \
-						$(SRC_DIR)init_list_a.c \
+						$(SRC_DIR)init_node_a.c \
 						$(SRC_DIR)push_swap.c \
 						$(SRC_DIR)sort_list.c \
 						$(SRC_DIR)split.c 

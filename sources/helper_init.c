@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:49:23 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/26 21:48:40 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/28 21:45:54 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	list_len(t_node *list)
 {
 	int	i;
 
+	if (!list)
+		return (0);
 	i = 0;
 	while (list)
 	{
@@ -31,7 +33,7 @@ t_node	*find_max(t_node *list)
 	t_node	*tmp;
 
 	if (!list)
-		return (0);
+		return (NULL);
 	tmp = list;
 	max = LONG_MIN;
 	while (tmp)
@@ -64,6 +66,7 @@ t_node	*find_min(t_node *list)
 		list = list->next;
 	return (list);
 }
+
 t_node	*get_cheapest(t_node *list)
 {
 	if (!list)
