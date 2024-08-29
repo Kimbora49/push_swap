@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:13 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/25 20:48:21 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/29 22:05:57 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	cost_analysis_a(t_node *a, t_node *b)
 		if (!(a->above_median))
 			a->push_cost = len_a - (a->index);
 		if (a->target_node->above_median)
-			a->push_cost = a->push_cost + a->target_node->index;
+			a->push_cost += a->target_node->index;
 		else
-			a->push_cost = a->push_cost + (len_b - (a->target_node->index));
+			a->push_cost += len_b - (a->target_node->index);
 		a = a->next;
 	}
 }

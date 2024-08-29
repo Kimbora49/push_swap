@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:17:18 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/25 20:54:14 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/29 23:20:36 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,15 @@ void	min_on_top(t_node **a)
 	}
 }
 
-void	ft_sort_3elem(t_node **a)
+void	ft_sort_3elem(t_node **a) 
 {
-	if ((*a)->nbr > (*a)->next->nbr)
-	{
-		if ((*a)->nbr > (*a)->next->next->nbr)
-			ra(a);
-	}
-	else if ((*a)->next->nbr > (*a)->nbr)
-	{
-		if ((*a)->next->nbr > (*a)->next->next->nbr)
-			rra(a);
-	}
+	t_node	*biggest_node;
+
+	biggest_node = find_max(*a);
+	if (biggest_node == *a)
+		ra(a);
+	else if ((*a)->next == biggest_node)
+		rra(a);
 	if ((*a)->nbr > (*a)->next->nbr)
 		sa(a);
 }

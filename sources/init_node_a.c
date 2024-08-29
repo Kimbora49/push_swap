@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:51:18 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/26 21:42:05 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/29 22:29:04 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	append_node(t_node **list, int n)
 
 t_node	*find_last(t_node *list)
 {
+	if (!list)
+		return (NULL);
 	while (list->next)
-	{
 		list = list->next;
-	}
 	return (list);
 }
 
