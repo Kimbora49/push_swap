@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:52:46 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/29 22:59:37 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/30 15:10:17 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ void	ra(t_node **a)
 	if (*a == NULL || (*a)->next == NULL)
 		return ;
 	node = find_last(*a);
-	(*a)->next = *a;
+	node->next = *a;
 	*a = (*a)->next;
 	(*a)->prev = NULL;
 	node->next->prev = node;
 	node->next->next = NULL;
 	write(1, "ra\n", 3);
-	return ; 
 }
 
 void	rb(t_node **b)
@@ -35,13 +34,12 @@ void	rb(t_node **b)
 	if (*b == NULL || (*b)->next == NULL)
 		return ;
 	node = find_last(*b);
-	(*b)->next = *b;
+	node->next = *b;
 	*b = (*b)->next;
 	(*b)->prev = NULL;
 	node->next->prev = node;
 	node->next->next = NULL;
 	write(1, "rb\n", 3);
-	return ; 
 }
 
 void	rr(t_node **a, t_node **b)
@@ -54,7 +52,7 @@ void	rr(t_node **a, t_node **b)
 	if (*b == NULL || (*b)->next == NULL)
 		return ;
 	node = find_last(*a);
-	(*a)->next = *a;
+	node->next = *a;
 	*a = (*a)->next;
 	(*a)->prev = NULL;
 	node->next->prev = node;
@@ -66,5 +64,4 @@ void	rr(t_node **a, t_node **b)
 	node2->next->prev = node2;
 	node2->next->next = NULL;
 	write(1, "rr\n", 3);
-	return ; 
 }

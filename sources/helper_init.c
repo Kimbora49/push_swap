@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:49:23 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/29 22:01:28 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/30 14:27:06 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,24 @@ t_node	*get_cheapest(t_node *list)
 		list = list->next;
 	}
 	return (NULL);
+}
+long	ft_atol(char *s) //Define a function that converts every string into a long value
+{
+	long	result;
+	int		sign;
+
+	result = 0;
+	sign = 1; 
+	while (*s == ' ' || *s == '\t' || *s == '\n' || \
+			*s == '\r' || *s == '\f' || *s == '\v')
+		s++;
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			sign = -1;
+		s++;
+	}
+	while (ft_isdigit(*s))
+		result = result * 10 + (*s++ - '0');
+	return (result * sign);
 }

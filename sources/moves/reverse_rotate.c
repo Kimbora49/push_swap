@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:52:26 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/29 22:49:44 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/30 13:58:40 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	rra(t_node **a)
 	*a = node;
 	node->next->prev = node;
 	write(1, "rra\n", 4);
-	return ;
 }
 
 void	rrb(t_node **b)
@@ -41,7 +40,6 @@ void	rrb(t_node **b)
 	*b = node;
 	node->next->prev = node;
 	write(1, "rrb\n", 4);
-	return ;
 }
 
 void	rrr(t_node **a, t_node **b)
@@ -66,5 +64,4 @@ void	rrr(t_node **a, t_node **b)
 	*b = node2;
 	node2->next->prev = node2;
 	write(1, "rrr\n", 4);
-	return ;
 }

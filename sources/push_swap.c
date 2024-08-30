@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:01:48 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/26 21:45:13 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/30 15:14:49 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-		argv = ft_split(argv[1]);
+		argv = split(argv[1], ' ');
 	init_node_a(&a, argv + 1);
 	if (!list_sorted(a))
 	{

@@ -6,20 +6,17 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:56:48 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/26 22:19:27 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/30 15:25:00 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-// # include <unistd.h>
-// # include <stdlib.h>
-// # include <stdarg.h>
-
-# include <stdbool.h> //To use bool flags, e.g, to print or not to print
-# include <limits.h> //To define MIN and MAX macros
-# include "../libft/libft.h"
+# include <stdbool.h>
+# include <limits.h>
+# include "../libft/inc/libft.h"
+# include "../libft/inc/ft_printf.h"
 
 // PROTOTYPES
 typedef struct s_node
@@ -54,11 +51,10 @@ int			list_len(t_node *list);
 t_node		*find_max(t_node *list);
 t_node		*find_min(t_node *list);
 t_node		*get_cheapest(t_node *list);
+long		ft_atol(char *s);
 
 //split
-int			count_word(char *str);
-int			word_len(char *str, int i);
-char		**ft_split(char *s);
+char		**split(char *s, char c);
 
 //helper_prepush
 void		prep_for_push(t_node **list, t_node *top_node, char list_name);

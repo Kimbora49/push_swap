@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:51:45 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/29 23:15:20 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/30 13:58:23 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	pa(t_node **a, t_node **b)
 		*a = btemp;
 	}
 	write(1, "pa\n", 3);
-	return ;
 }
 
 void	pb(t_node **a, t_node **b)
@@ -61,5 +60,4 @@ void	pb(t_node **a, t_node **b)
 		*b = atemp;
 	}
 	write(1, "pb\n", 3);
-	return ;
 }
