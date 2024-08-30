@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:17:18 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/29 23:20:36 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/30 23:56:43 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,19 @@ void	move_a_to_b(t_node **a, t_node **b)
 
 	cheapest_node = get_cheapest(*a);
 	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
+	{
+		printf("rotate_both\n"); //tmp
 		rotate_both(a, b, cheapest_node);
+	}
 	else if (!(cheapest_node->above_median)
 		&& !(cheapest_node->target_node->above_median))
+	{
+		printf("rev_rotate_both\n"); //tmp
 		rev_rotate_both(a, b, cheapest_node);
+	}
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target_node, 'b');
-	pb(b, a);
+	pb(a, b);
 }
 
 void	move_b_to_a(t_node **a, t_node **b)
@@ -62,10 +68,11 @@ void	sort_node(t_node **a, t_node **b)
 	int	len_a;
 
 	len_a = list_len(*a);
+	// printf("list_len : %d\n", len_a); //tmp
 	if (len_a-- > 3 && !list_sorted(*a))
-		pb(b, a);
+		pb(a, b);
 	if (len_a-- > 3 && !list_sorted(*a))
-		pb(b, a);
+		pb(a, b);
 	while (len_a-- > 3 && !list_sorted(*a))
 	{
 		init_nodes_a(*a, *b);

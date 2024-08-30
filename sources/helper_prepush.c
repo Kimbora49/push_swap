@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:10:48 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/28 21:04:51 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 00:05:46 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ bool	list_sorted(t_node *lst)
 void		rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-	rr(a, b);
+	{
+		printf("ratio\n"); //tmp
+		rr(a, b);
+	}
 	init_index_median(*a);
 	init_index_median(*b);
 }
@@ -57,7 +60,10 @@ void		rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 void		rev_rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-	rrr(a, b);
+	{
+		printf("reverse ratio\n"); //tmp
+		rrr(a, b);
+	}
 	init_index_median(*a);
 	init_index_median(*b);
 }

@@ -6,7 +6,7 @@
 #    By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 12:20:53 by ddifalla          #+#    #+#              #
-#    Updated: 2024/08/30 15:42:54 by tmazan           ###   ########.fr        #
+#    Updated: 2024/08/30 21:15:29 by tmazan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_DIR				= obj/
 
 # Compiler and CFlags
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra -I -g
+CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
 # Source Files

@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:51:45 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/30 13:58:23 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/30 21:59:29 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	pa(t_node **a, t_node **b)
 void	pb(t_node **a, t_node **b)
 {
 	t_node	*atemp;
-
 	if (*a == NULL)
 		return ;
 	atemp = *a;

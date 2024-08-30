@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:52:46 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/30 15:10:17 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 00:13:32 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,26 @@ void	rb(t_node **b)
 
 void	rr(t_node **a, t_node **b)
 {
-	t_node	*node;
-	t_node	*node2;
+	// t_node	*last_node;
+	// t_node	*node2;
 
-	if (*a == NULL || (*a)->next == NULL)
-		return ;
-	if (*b == NULL || (*b)->next == NULL)
-		return ;
-	node = find_last(*a);
-	node->next = *a;
-	*a = (*a)->next;
-	(*a)->prev = NULL;
-	node->next->prev = node;
-	node->next->next = NULL;
-	node2 = find_last(*b);
-	(*b)->next = *b;
-	*b = (*b)->next;
-	(*b)->prev = NULL;
-	node2->next->prev = node2;
-	node2->next->next = NULL;
+	// if (*a == NULL || (*a)->next == NULL)
+	// 	return ;
+	// if (*b == NULL || (*b)->next == NULL)
+	// 	return ;
+	// last_node = find_last(*a);
+	// last_node->next = *a;
+	// *a = (*a)->next;
+	// (*a)->prev = NULL;
+	// last_node->next->prev = last_node;
+	// last_node->next->next = NULL;
+	// node2 = find_last(*b);
+	// (*b)->next = *b;
+	// *b = (*b)->next;
+	// (*b)->prev = NULL;
+	// node2->next->prev = node2;
+	// node2->next->next = NULL;
+	ra(a);
+	rb(b);
 	write(1, "rr\n", 3);
 }
