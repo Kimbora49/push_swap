@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:17:18 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/30 23:56:43 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 12:50:07 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,10 @@ void	move_a_to_b(t_node **a, t_node **b)
 
 	cheapest_node = get_cheapest(*a);
 	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
-	{
-		printf("rotate_both\n"); //tmp
 		rotate_both(a, b, cheapest_node);
-	}
 	else if (!(cheapest_node->above_median)
 		&& !(cheapest_node->target_node->above_median))
-	{
-		printf("rev_rotate_both\n"); //tmp
 		rev_rotate_both(a, b, cheapest_node);
-	}
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target_node, 'b');
 	pb(a, b);
@@ -44,7 +38,7 @@ void	min_on_top(t_node **a)
 	while ((*a)->nbr != find_min(*a)->nbr)
 	{
 		if (find_min(*a)->above_median)
-			ra(a);
+			ra(a, true);
 		else
 			rra(a);
 	}
@@ -56,7 +50,7 @@ void	ft_sort_3elem(t_node **a)
 
 	biggest_node = find_max(*a);
 	if (biggest_node == *a)
-		ra(a);
+		ra(a, true);
 	else if ((*a)->next == biggest_node)
 		rra(a);
 	if ((*a)->nbr > (*a)->next->nbr)
@@ -68,7 +62,6 @@ void	sort_node(t_node **a, t_node **b)
 	int	len_a;
 
 	len_a = list_len(*a);
-	// printf("list_len : %d\n", len_a); //tmp
 	if (len_a-- > 3 && !list_sorted(*a))
 		pb(a, b);
 	if (len_a-- > 3 && !list_sorted(*a))

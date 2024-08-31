@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:43:45 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/30 15:43:46 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 13:42:06 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+#include <stdio.h>
 
 typedef struct s_list
 {

@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:35:40 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/25 20:43:32 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:51:24 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,24 @@ void	free_list(t_node **list)
 	*list = NULL;
 }
 
-void	free_errors(t_node **list)
+void	free_errors(t_node **list, char **av)
 {
 	free_list(list);
-	ft_printf("Error\n");
+	free_split(av);
+	write(2, "Error\n", 6);
 	exit(1);
+}
+
+void	free_split(char **argv)
+{
+	int	i;
+
+	i = 0;
+	if (!argv || !*argv)
+		return ;
+	while (argv[i])
+	{
+		free(argv[i++]);
+	}
+	free(argv);
 }

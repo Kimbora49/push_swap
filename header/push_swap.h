@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:56:48 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/30 15:25:00 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:41:50 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_node
 
 //cleaner_postpush
 void		free_list(t_node **list);
-void		free_errors(t_node **list);
+void		free_errors(t_node **list, char **av);
+void		free_split(char **argv);
 
 //init_a_to_b
 void		init_index_median(t_node *list);
@@ -51,10 +52,11 @@ int			list_len(t_node *list);
 t_node		*find_max(t_node *list);
 t_node		*find_min(t_node *list);
 t_node		*get_cheapest(t_node *list);
-long		ft_atol(char *s);
+long		ft_atol(char *s, t_node **a, char **av);
 
 //split
 char		**split(char *s, char c);
+char		**ft_join_args(char **av);
 
 //helper_prepush
 void		prep_for_push(t_node **list, t_node *top_node, char list_name);
@@ -80,8 +82,8 @@ void		pa(t_node **a, t_node **b);
 void		pb(t_node **a, t_node **b);
 
 	//rotate
-void		ra(t_node **a);
-void		rb(t_node **b);
+void		ra(t_node **a, bool printing);
+void		rb(t_node **b, bool printing);
 void		rr(t_node **a, t_node **b);
 
 	//reverse_rotate

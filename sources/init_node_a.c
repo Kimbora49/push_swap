@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:51:18 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/29 22:29:04 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 17:07:03 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ int	error_syntax(char *s)
 {
 	if (!(*s == '+' || *s == '-' || (*s >= '0' && *s <= '9')))
 		return (1);
-	if ((*s == '+'
-			|| *s == '-')
-		&& !(s[1] >= '0' && s[1] <= '9'))
+	if ((*s == '+' || *s == '-') && !(s[1] >= '0' && s[1] <= '9'))
 		return (1);
 	while (*++s)
 	{
@@ -84,12 +82,12 @@ void	init_node_a(t_node **a, char **argv)
 	while (argv[i])
 	{
 		if (error_syntax(argv[i]))
-			free_errors(a);
-		n = ft_atol(argv[i]);
+			free_errors(a, argv);
+		n = ft_atol(argv[i], a, argv);
 		if (n > INT_MAX || n < INT_MIN)
-			free_errors(a);
+			free_errors(a, argv);
 		if (error_duplicate(*a, (int)n))
-			free_errors(a);
+			free_errors(a, argv);
 		append_node(a, (int)n);
 		i++;
 	}

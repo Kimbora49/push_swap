@@ -6,13 +6,13 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:52:46 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/31 00:13:32 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 12:50:51 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 
-void	ra(t_node **a)
+void	ra(t_node **a, bool printing)
 {
 	t_node	*node;
 
@@ -24,10 +24,11 @@ void	ra(t_node **a)
 	(*a)->prev = NULL;
 	node->next->prev = node;
 	node->next->next = NULL;
-	write(1, "ra\n", 3);
+	if (printing)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_node **b)
+void	rb(t_node **b, bool printing)
 {
 	t_node	*node;
 
@@ -39,7 +40,8 @@ void	rb(t_node **b)
 	(*b)->prev = NULL;
 	node->next->prev = node;
 	node->next->next = NULL;
-	write(1, "rb\n", 3);
+	if (printing)
+		write(1, "rb\n", 3);
 }
 
 void	rr(t_node **a, t_node **b)
@@ -63,7 +65,7 @@ void	rr(t_node **a, t_node **b)
 	// (*b)->prev = NULL;
 	// node2->next->prev = node2;
 	// node2->next->next = NULL;
-	ra(a);
-	rb(b);
+	ra(a, false);
+	rb(b, false);
 	write(1, "rr\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:49:23 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/30 14:27:06 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:44:09 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,14 @@ t_node	*get_cheapest(t_node *list)
 	}
 	return (NULL);
 }
-long	ft_atol(char *s) //Define a function that converts every string into a long value
+long	ft_atol(char *s, t_node **a, char **av)
 {
 	long	result;
 	int		sign;
 
 	result = 0;
-	sign = 1; 
-	while (*s == ' ' || *s == '\t' || *s == '\n' || \
-			*s == '\r' || *s == '\f' || *s == '\v')
+	sign = 1;
+	while (*s == ' ' || *s == '\t' || *s == '\n' || (*s >= 9 && *s <= 13))
 		s++;
 	if (*s == '-' || *s == '+')
 	{
@@ -95,7 +94,12 @@ long	ft_atol(char *s) //Define a function that converts every string into a long
 			sign = -1;
 		s++;
 	}
-	while (ft_isdigit(*s))
-		result = result * 10 + (*s++ - '0');
+	while (*s >= '0' && *s <= '9')
+	{
+		if ((result > LONG_MAX / 10) || (result == LONG_MAX / 10 && (*s
+					- 48) > LONG_MAX % 10))
+			free_errors(a, av);
+		result = result * 10 + (*s++ - 48);
+	}
 	return (result * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:10:48 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/31 00:05:46 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/08/31 17:06:56 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	prep_for_push(t_node **list, t_node *top_node, char list_name)
 		if (list_name == 'a')
 		{
 			if (top_node->above_median)
-				ra(list);
+				ra(list, true);
 			else
 				rra(list);
 		}
 		else if (list_name == 'b')
 		{
 			if (top_node->above_median)
-				rb(list);
+				rb(list, true);
 			else
 				rrb(list);
 		}
@@ -49,10 +49,7 @@ bool	list_sorted(t_node *lst)
 void		rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-	{
-		printf("ratio\n"); //tmp
 		rr(a, b);
-	}
 	init_index_median(*a);
 	init_index_median(*b);
 }
@@ -60,10 +57,7 @@ void		rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 void		rev_rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-	{
-		printf("reverse ratio\n"); //tmp
 		rrr(a, b);
-	}
 	init_index_median(*a);
 	init_index_median(*b);
 }
