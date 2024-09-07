@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:35:39 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/31 17:04:31 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/09/07 02:36:54 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ char	**ft_join_args(char **av)
 	int		i;
 
 	i = 1;
+
 	tmp = ft_strjoin(av[i++], " ");
 	while (av[i])
 	{
@@ -185,6 +186,7 @@ char	**ft_join_args(char **av)
 		free(str);
 		i++;
 	}
+	
 	matrix = ft_split(tmp, ' ');
 	free(tmp);
 	return (matrix);

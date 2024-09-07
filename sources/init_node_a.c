@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:51:18 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/31 17:07:03 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/09/07 02:00:21 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	error_syntax(char *s)
 		if (!(*s >= '0' && *s <= '9'))
 			return (1);
 	}
+
+
 	return (0);
 }
 
@@ -81,7 +83,7 @@ void	init_node_a(t_node **a, char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (error_syntax(argv[i]))
+		if (!error_syntax(argv[i]))
 			free_errors(a, argv);
 		n = ft_atol(argv[i], a, argv);
 		if (n > INT_MAX || n < INT_MIN)
