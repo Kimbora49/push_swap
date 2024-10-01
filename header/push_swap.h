@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:56:48 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/31 16:41:50 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/10/01 20:16:06 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,16 @@ typedef struct s_node
 //cleaner_postpush
 void		free_list(t_node **list);
 void		free_errors(t_node **list, char **av);
+void		ft_check(char **av);
 void		free_split(char **argv);
+char    	**ft_join_args(char **av);
 
 //init_a_to_b
 void		init_index_median(t_node *list);
-void		set_target_a(t_node *a, t_node *b);
-void		cost_analysis_a(t_node *a, t_node *b);
 void		set_cheapest(t_node *list);
 void		init_nodes_a(t_node *a, t_node *b);
 
 //init_b_to_a
-void		set_target_b(t_node *a, t_node *b);
 void		init_nodes_b(t_node *a, t_node *b);
 
 //helper_init
@@ -52,21 +51,15 @@ int			list_len(t_node *list);
 t_node		*find_max(t_node *list);
 t_node		*find_min(t_node *list);
 t_node		*get_cheapest(t_node *list);
-long		ft_atol(char *s, t_node **a, char **av);
 
 //split
 char		**split(char *s, char c);
-char		**ft_join_args(char **av);
 
 //helper_prepush
 void		prep_for_push(t_node **list, t_node *top_node, char list_name);
-bool		list_sorted(t_node *lst);
-void		rotate_both(t_node **a, t_node **b, t_node *cheapest_node);
-void		rev_rotate_both(t_node **a, t_node **b, t_node *cheapest_node);
+int			list_sorted(t_node *lst);
 
-//sort_node
-void		move_a_to_b(t_node **a, t_node **b);
-void		move_b_to_a(t_node **a, t_node **b);
+//sort_list
 void		min_on_top(t_node **a);
 void		ft_sort_3elem(t_node **a);
 void		sort_node(t_node **a, t_node **b);
@@ -92,7 +85,6 @@ void		rrb(t_node **b);
 void		rrr(t_node **a, t_node **b);
 
 //init_node_a
-void		append_node(t_node **list, int n);
 t_node		*find_last(t_node *list);
 int			error_syntax(char *s);
 int			error_duplicate(t_node *a, int n);

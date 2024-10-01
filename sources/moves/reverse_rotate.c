@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:52:26 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/30 13:58:40 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/10/01 16:32:29 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rra(t_node **a)
 {
 	t_node	*node;
 
-	if (*a == NULL || (*a)->next == NULL)
+	if (!*a || !(*a)->next)
 		return ;
 	node = find_last(*a);
 	node->prev->next = NULL;
@@ -31,7 +31,7 @@ void	rrb(t_node **b)
 {
 	t_node	*node;
 
-	if (*b == NULL || (*b)->next == NULL)
+	if (!*b || !(*b)->next)
 		return ;
 	node = find_last(*b);
 	node->prev->next = NULL;
@@ -47,9 +47,9 @@ void	rrr(t_node **a, t_node **b)
 	t_node	*node;
 	t_node	*node2;
 
-	if (*a == NULL || (*a)->next == NULL)
+	if (!*a || !(*a)->next)
 		return ;
-	if (*b == NULL || (*b)->next == NULL)
+	if (!*b || !(*b)->next)
 		return ;
 	node = find_last(*a);
 	node->prev->next = NULL;

@@ -6,14 +6,14 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:53:40 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/30 13:59:01 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/10/01 16:45:14 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 void	sa(t_node **a)
 {
-	if (*a == NULL || (*a)->next == NULL)
+	if (!*a || !(*a)->next)
 		return ;
 	*a = (*a)->next;
 	(*a)->prev->prev = *a;
@@ -27,7 +27,7 @@ void	sa(t_node **a)
 
 void	sb(t_node **b)
 {
-	if (*b == NULL || (*b)->next == NULL)
+	if (!*b || !(*b)->next)
 		return ;
 	*b = (*b)->next;
 	(*b)->prev->prev = *b;
@@ -41,9 +41,9 @@ void	sb(t_node **b)
 
 void	ss(t_node **a, t_node **b)
 {
-	if (*a == NULL || (*a)->next == NULL)
+	if (!*a || !(*a)->next)
 		return ;
-	if (*b == NULL || (*b)->next == NULL)
+	if (!*b || (*b)->next)
 		return ;
 	*a = (*a)->next;
 	(*a)->prev->prev = *a;

@@ -6,13 +6,13 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:20:14 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/25 20:50:40 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/09/28 16:28:22 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	set_target_b(t_node *a, t_node *b)
+static void	set_target_b(t_node *a, t_node *b)
 {
 	t_node	*current_a;
 	t_node	*target_node;

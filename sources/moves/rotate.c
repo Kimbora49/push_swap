@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:52:46 by tmazan            #+#    #+#             */
-/*   Updated: 2024/09/06 22:16:49 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/10/01 16:39:55 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ra(t_node **a, bool printing)
 {
 	t_node	*node;
 
-	if (*a == NULL || (*a)->next == NULL)
+	if (!*a || !(*a)->next)
 		return ;
 	node = find_last(*a);
 	node->next = *a;
@@ -32,8 +32,8 @@ void	rb(t_node **b, bool printing)
 {
 	t_node	*node;
 
-	if (*b == NULL || (*b)->next == NULL)
-		return ;
+	if (!*b || !(*b)->next)
+		return ;	
 	node = find_last(*b);
 	node->next = *b;
 	*b = (*b)->next;

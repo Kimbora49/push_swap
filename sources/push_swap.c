@@ -6,36 +6,11 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:01:48 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/09/07 02:34:05 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/10/01 17:37:44 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
-
-void	ft_check(char **av)
-{
-	int	j;
-	int	y;
-
-	j = 1;
-	y = 0;
-	while (av[j])
-	{
-		y = 0;
-		while (av[j][y])
-		{
-			if (av[j][y] != 32 && av[j][y] != '\t')
-				break ;
-			y++;
-		}
-		if (!av[j][y])
-		{
-			write(2,"Error\n",6);
-			exit(1);
-		}
-		j++;
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -48,23 +23,16 @@ int	main(int argc, char **argv)
 		return (0);
 	ft_check(argv);
 	argv = ft_join_args(argv);
-	if(!argv[1])
-	{
-		free_split(argv);
-		write(2,"Error\n",6);
-		exit(1);
-	}
 	init_node_a(&a, argv);
 	free_split(argv);
 	if (!list_sorted(a))
 	{
 		if (list_len(a) == 2)
 			sa(&a);
-		if (list_len(a) == 3)
+		else if (list_len(a) == 3)
 			ft_sort_3elem(&a);
-		if (list_len(a) >= 3)
+		else
 			sort_node(&a, &b);
 	}
 	free_list(&a);
-	return (0);
 }

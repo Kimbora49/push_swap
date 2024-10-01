@@ -6,13 +6,13 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:51:18 by tmazan            #+#    #+#             */
-/*   Updated: 2024/09/07 02:00:21 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/10/01 20:04:16 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	append_node(t_node **list, int n)
+static void	append_node(t_node **list, int n)
 {
 	t_node	*node;
 	t_node	*last_node;
@@ -24,6 +24,7 @@ void	append_node(t_node **list, int n)
 		return ;
 	node->next = NULL;
 	node->nbr = n;
+	node->cheapest = 0;
 	if (!(*list))
 	{
 		*list = node;
@@ -57,8 +58,6 @@ int	error_syntax(char *s)
 		if (!(*s >= '0' && *s <= '9'))
 			return (1);
 	}
-
-
 	return (0);
 }
 
@@ -73,6 +72,31 @@ int	error_duplicate(t_node *a, int n)
 		a = a->next;
 	}
 	return (0);
+}
+
+static long	ft_atol(const char *s, t_node **a, char **av)
+{
+	long	result;
+	int		sign;
+
+	result = 0;
+	sign = 1;
+	while (*s == ' ' || *s == '\t' || *s == '\n' || (*s >= 9 && *s <= 13))
+		s++;
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			sign = -1;
+		s++;
+	}
+	while (*s >= '0' && *s <= '9')
+	{
+		if ((result > LONG_MAX / 10) || (result == LONG_MAX / 10 && (*s
+					- 48) > LONG_MAX % 10))
+			free_errors(a, av);
+		result = result * 10 + (*s++ - 48);
+	}
+	return (result * sign);
 }
 
 void	init_node_a(t_node **a, char **argv)

@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:49:23 by tmazan            #+#    #+#             */
-/*   Updated: 2024/08/31 16:44:09 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/10/01 20:00:08 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_node	*find_min(t_node *list)
 	t_node	*tmp_min;
 
 	if (!list)
-		return (0);
+		return (NULL);
 	min = LONG_MAX;
 	while (list)
 	{
@@ -78,28 +78,4 @@ t_node	*get_cheapest(t_node *list)
 		list = list->next;
 	}
 	return (NULL);
-}
-long	ft_atol(char *s, t_node **a, char **av)
-{
-	long	result;
-	int		sign;
-
-	result = 0;
-	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || (*s >= 9 && *s <= 13))
-		s++;
-	if (*s == '-' || *s == '+')
-	{
-		if (*s == '-')
-			sign = -1;
-		s++;
-	}
-	while (*s >= '0' && *s <= '9')
-	{
-		if ((result > LONG_MAX / 10) || (result == LONG_MAX / 10 && (*s
-					- 48) > LONG_MAX % 10))
-			free_errors(a, av);
-		result = result * 10 + (*s++ - 48);
-	}
-	return (result * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:13 by ddifalla          #+#    #+#             */
-/*   Updated: 2024/08/29 22:05:57 by tmazan           ###   ########.fr       */
+/*   Updated: 2024/10/01 20:16:07 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	init_index_median(t_node *list)
 	{
 		list->index = i;
 		if (i <= median)
-			list->above_median = true;
+			list->above_median = 1;
 		else
-			list->above_median = false;
+			list->above_median = 0;
 		list = list->next;
-		++i;
+		i++;
 	}
 }
 
-void	set_target_a(t_node *a, t_node *b)
+static void	set_target_a(t_node *a, t_node *b)
 {
 	t_node	*current_b;
 	t_node	*target_node;
@@ -61,7 +61,7 @@ void	set_target_a(t_node *a, t_node *b)
 	}
 }
 
-void	cost_analysis_a(t_node *a, t_node *b)
+static void	cost_analysis_a(t_node *a, t_node *b)
 {
 	int	len_a;
 	int	len_b;
@@ -98,7 +98,7 @@ void	set_cheapest(t_node *list)
 		}
 		list = list->next;
 	}
-	cheapest_node->cheapest = true;
+	cheapest_node->cheapest = 1;
 }
 
 void	init_nodes_a(t_node *a, t_node *b)
