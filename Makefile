@@ -5,73 +5,86 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/29 12:20:53 by ddifalla          #+#    #+#              #
-#    Updated: 2024/08/30 21:15:29 by tmazan           ###   ########.fr        #
+#    Created: 2024/01/03 23:37:35 by ayman_marzo       #+#    #+#              #
+#    Updated: 2024/10/03 17:13:13 by tmazan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Standard
 NAME				= push_swap
+BONUS_NAME			= checker
 
-# Directories
-LIBFT				= ./libft/libft.a
-HEADER				= header/
-SRC_DIR				= sources/
+LIBFT				= ./my_library/libft.a
+INC					= inc/
+SRC_DIR				= srcs/
 OBJ_DIR				= obj/
 
-# Compiler and CFlags
-CC					= gcc
+CC					= cc
 CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
-# Source Files
-MOVES_DIR		=		$(SRC_DIR)moves/push.c \
-						$(SRC_DIR)moves/reverse_rotate.c \
-						$(SRC_DIR)moves/rotate.c \
-						$(SRC_DIR)moves/swap.c \
+COMMANDS_DIR		=	$(SRC_DIR)commands/push.c \
+						$(SRC_DIR)commands/rev_rotate.c \
+						$(SRC_DIR)commands/rotate.c \
+						$(SRC_DIR)commands/sort_list.c \
+						$(SRC_DIR)commands/sort_three.c \
+						$(SRC_DIR)commands/swap.c
 
-PUSH_SWAP_DIR		=	$(SRC_DIR)cleaner_postpush.c \
-						$(SRC_DIR)helper_init.c \
-						$(SRC_DIR)helper_prepush.c \
-						$(SRC_DIR)init_a_to_b.c \
-						$(SRC_DIR)init_b_to_a.c \
-						$(SRC_DIR)init_node_a.c \
-						$(SRC_DIR)push_swap.c \
-						$(SRC_DIR)sort_list.c \
-						$(SRC_DIR)split.c 
+PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/handle_errors.c \
+						$(SRC_DIR)push_swap/init_a_to_b.c \
+						$(SRC_DIR)push_swap/init_b_to_a.c \
+						$(SRC_DIR)push_swap/split.c \
+						$(SRC_DIR)push_swap/list_init.c \
+						$(SRC_DIR)push_swap/list_utils.c \
+						$(SRC_DIR)push_swap/strjoin_swap.c
 
-# Concatenate all source files
-SRCS 				= $(MOVES_DIR) $(PUSH_SWAP_DIR)
+PUSH_SWAP_SRCS		= $(COMMANDS_DIR) $(PUSH_SWAP_DIR) $(SRC_DIR)push_swap/push_swap.c
+BONUS_SRCS			= $(COMMANDS_DIR) $(PUSH_SWAP_DIR) $(SRC_DIR)checker.c
 
-# Apply the pattern substitution to each source file in sources and produce a corresponding list of object files in the OBJ_DIR
-OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
+PUSH_SWAP_OBJS		= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(PUSH_SWAP_SRCS))
+BONUS_OBJS			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(BONUS_SRCS))
 
-# Build rules
+# Colors
+GREEN				= \033[0;32m
+YELLOW				= \033[1;33m
+BLUE				= \033[0;34m
+RED					= \033[0;31m
+NC					= \033[0m # No Color
+
 start:				
+					@echo "${BLUE}🔨 Starting build...${NC}"
 					@make all
 
 $(LIBFT):
-					@make -C ./libft
+					@echo "${YELLOW}📦 Building libft...${NC}"
+					@make -C ./my_library
 
 all: 				$(NAME)
 
-$(NAME): 			$(OBJ) $(LIBFT)
-					@$(CC) $(CFLAGS) $(HEADER) $(OBJ) $(LIBFT) -o $(NAME)
+$(NAME): 			$(PUSH_SWAP_OBJS) $(LIBFT)
+					@echo "${GREEN}🚀 Compiling and linking $(NAME)...${NC}"
+					@$(CC) $(CFLAGS) $(INC) $(PUSH_SWAP_OBJS) $(LIBFT) -o $(NAME)
 
-# Compile object files from source files
+$(BONUS_NAME): 		$(BONUS_OBJS) $(LIBFT)
+					@echo "${GREEN}🚀 Compiling and linking $(BONUS_NAME)...${NC}"
+					@$(CC) $(CFLAGS) $(INC) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
+
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
 					@mkdir -p $(@D)
-					@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
+					@echo "${BLUE}🛠️  Compiling $<...${NC}"
+					@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
+					@echo "${RED}🧹 Cleaning object files...${NC}"
 					@$(RM) -r $(OBJ_DIR)
-					@make clean -C ./libft
+					@make clean -C ./my_library
 
 fclean: 			clean
-					@$(RM) $(NAME)
+					@echo "${RED}🔥 Removing binaries...${NC}"
+					@$(RM) $(NAME) $(BONUS_NAME)
 					@$(RM) $(LIBFT)
 
 re: 				fclean all
 
-# Phony targets represent actions not files
-.PHONY: 			start all clean fclean re
+bonus: 				$(BONUS_NAME)
+
+.PHONY: 			start all clean fclean re bonus
