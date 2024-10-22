@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayman_marzouk <ayman_marzouk@student.42    +#+  +:+       +#+        */
+/*   By: tmazan <tmazan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 17:55:28 by amarzouk          #+#    #+#             */
-/*   Updated: 2024/01/03 22:54:24 by ayman_marzo      ###   ########.fr       */
+/*   Created: 2024/10/22 22:47:05 by tmazan            #+#    #+#             */
+/*   Updated: 2024/10/22 22:47:06 by tmazan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../inc/libft.h"
 

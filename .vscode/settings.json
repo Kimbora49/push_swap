@@ -2,7 +2,8 @@
     "files.associations": {
         "libft.h": "c",
         "random": "c",
-        "push_swap.h": "c"
+        "push_swap.h": "c",
+        "ft_printf.h": "c"
     },
     "files.exclude": {
         "**/.git": true,
